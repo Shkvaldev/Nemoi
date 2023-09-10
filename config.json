@@ -1,0 +1,4 @@
+{
+    "TELEGRAM_API_TOKEN": "",
+    "VOSK_MODEL_PATH": "vosk-model-small-ru-0.22"
+}

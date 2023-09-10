@@ -1,0 +1,9 @@
+[Unit]
+  Description=Nemoi STT (for Telegram)
+
+[Service]
+  ExecStart=
+  Type=simple
+
+[Install]
+  WantedBy=multi-user.target
