@@ -16,9 +16,13 @@ def parse_config(config_path):
 class Core:
     def __init__(self):
         self.config = parse_config("config.json")
+        # Init logging TODO: rewrite using asyncio
+        self.log = open(f"logs/{time.strftime('%H_%M_%S_log.txt')}", "w")
         self.stt = STT(self.config)
         self.tgbot = TGBot(self)
         self.tgbot.run()
+        self.log.write(f"[{time.strftime('%H_%M_%S_log.txt')}] Bot is off\n")
+        self.log.close()
 
 if __name__ == "__main__":
     Checker(parse_config("config.json"))

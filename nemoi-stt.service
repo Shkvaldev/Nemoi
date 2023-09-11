@@ -2,7 +2,8 @@
   Description=Nemoi STT (for Telegram)
 
 [Service]
-  ExecStart=
+  WorkingDirectory=<path to venv>/Nemoi
+  ExecStart=<path to venv>/bin/python main.py
   Type=simple
 
 [Install]
