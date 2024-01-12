@@ -2,42 +2,29 @@
 **Приложение для перевода голосовых в текст для Telegram**
 > Приложение находится на начальном этапе разработки!
 
+>Существует облегчённая версия, работающая при помощи VOSK: Nemoi STT Lite
+
 # Особенное спасибо разработчикам:
 - **Aiogram: https://github.com/aiogram/aiogram**
 - **whisper-cpp-python: https://github.com/carloscdias/whisper-cpp-python**
 
-- _VOSK: https://alphacephei.com/vosk_ (использовался ранее, но всё равно спасибо)
+> _VOSK: https://alphacephei.com/vosk_ (использовался ранее, но всё равно спасибо)
 
 # Установка и запуск:
-1. Установливаем язык программирования Python:
+1. Установливаем системные зависимости:
 ```shell
 # Arch Linux
-sudo pacman -Sy python python-pip python-setuptools ffmpeg
+sudo pacman -Sy python python-pip ffmpeg
 ```
 2. Клонируем репозиторий:
 ```shell
-git clone (repo url here)
+git clone URL
 ```
-3. Устанавливаем окружение:
+3. Добавляем токен (регистрируем у BotFather) в /usr/share/nemoi-stt-lite/run/src/config.json
+4. Запускаем бота:
 ```shell
-# Глобально
-pip install -r requirements.txt --break-system-packages
-# Виртуально
-python -m venv nemoi_venv
-mv Nemoi nemoi_venv
-cd nemoi_venv
-source bin/activate
-pip install -r requirements.txt
-```
-4. Скачиваем модель _ggml-small.bin_:
-```shell
-wget --show-progress -O ggml-small.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin
-```
-5. Добавляем токен (регистрируем у BotFather) в config.json
-6. Запускаем бота:
-> Не забываем активировать виртуальное окружение перед запуском, если установили туда!
-```shell
-python main.py
+sudo systemctl daemon-reload
+sudo systemctl start nemoi-stt
 ```
 
 

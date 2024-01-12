@@ -18,7 +18,6 @@ post_install() {
     cd /usr/share/nemoi-stt/run/src
     wget --show-progress -O ggml-small.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin
 
-    sudo systemctl daemon-reload
     echo "[*] All done :)"
     echo "[!] Don't forget to add your's Telegram bot token into /usr/share/nemoi-stt/run/src/config.json and run 'sudo systemctl start nemoi-stt'"
 }
