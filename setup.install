@@ -1,0 +1,37 @@
+post_install() {
+
+    echo "[*] Creating virtual environment for bot ..."
+    sleep 1
+    cd /usr/share/nemoi-stt
+    python -m venv run
+    
+    echo "[*] Placing files ..."
+    sleep 1
+    mv /usr/share/nemoi-stt/srccode /usr/share/nemoi-stt/run/src
+
+    echo "[*] Installing python dependences ..."
+    sleep 1
+    /usr/share/nemoi-stt/run/bin/pip install -r /usr/share/nemoi-stt/run/src/requirements.txt 
+    
+    echo "[*] Downloading model ..."
+    sleep 1
+    cd /usr/share/nemoi-stt/run/src
+    wget --show-progress -O ggml-small.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin
+
+    sudo systemctl daemon-reload
+    echo "[*] All done :)"
+    echo "[!] Don't forget to add your's Telegram bot token into /usr/share/nemoi-stt/run/src/config.json and run 'sudo systemctl start nemoi-stt'"
+}
+
+pre_remove() {
+
+    echo "[*] Deleting Nemoi STT files ..."
+    rm -rf /usr/share/nemoi-stt
+
+    echo "[*] Deleting Nemoi STT daemon ..."
+    sudo systemctl stop nemoi-stt
+    rm -rf /etc/systemd/system/nemoi-stt.service
+    sudo systemctl daemon-reload
+
+    echo "[*] Bye and see you later ;)"
+}
